@@ -73,7 +73,7 @@ bind: function(){
 
 render(){
     var _this = this
-    $.getJSON('https://api.jirengu.com/fm/getChannels.php')
+    $.getJSON('//api.jirengu.com/fm/getChannels.php')
         .done(function(ret){
             console.log(ret)
             _this.renderFooter(ret.channels)
@@ -195,7 +195,7 @@ loadMusic(){
         _this.loadCollection()
     }else{
         //获取歌曲内容
-        $.getJSON('https://jirenguapi.applinzi.com/fm/getSong.php', { channel: this.channelId }).done(function (ret){
+        $.getJSON('//jirenguapi.applinzi.com/fm/getSong.php', { channel: this.channelId }).done(function (ret){
             //获取数据成功后播放返回的数据中的第一项，没有返回则不播放
             _this.play(ret.song[0] || null)
         })
