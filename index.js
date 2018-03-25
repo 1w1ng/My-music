@@ -73,7 +73,7 @@ bind: function(){
 
 render(){
     var _this = this
-    $.getJSON('http://api.jirengu.com/fm/getChannels.php')
+    $.getJSON('https://api.jirengu.com/fm/getChannels.php')
         .done(function(ret){
             console.log(ret)
             _this.renderFooter(ret.channels)
@@ -88,7 +88,7 @@ renderFooter: function(channels){
     channels.unshift({
         channel_id:0,
         name:'我喜欢的',
-        cover_small:'http://p64wf7hkf.bkt.clouddn.com/3.jpg', 
+        cover_small:'https://p64wf7hkf.bkt.clouddn.com/3.jpg', 
     })
     channels.forEach(function(channel){
         html += '<li data-channel-id='+channel.channel_id + ' data-channel-name='+channel.name+'>'
