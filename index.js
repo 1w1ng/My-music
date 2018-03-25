@@ -73,7 +73,7 @@ bind: function(){
 
 render(){
     var _this = this
-    $.getJSON('//api.jirengu.com/fm/getChannels.php')
+    $.getJSON('//jirenguapi.applinzi.com/fm/getChannels.php')
         .done(function(ret){
             console.log(ret)
             _this.renderFooter(ret.channels)
