@@ -302,11 +302,12 @@ loadLyric(sid) {
         .done(function (ret) {
             // console.log(ret.lyric)
             var lyricObj = {}
-            ret.lyric.split('\n').forEach(function (line) {
-                var timeArr = line.match(/\d{2}:\d{2}/g)
+            ret.lyric.split('\n').forEach(function (line) { // 得到一个数组遍历它
+                var timeArr = line.match(/\d{2}:\d{2}/g) // 匹配时间 
+                // 判断数组time是否是数组存在
                 if (timeArr) {
                     timeArr.forEach(function (time) {
-                        lyricObj[time] = line.replace(/\[.+?\]/g, '')
+                        lyricObj[time] = line.replace(/\[.+?\]/g, '') // 匹配歌词
                     })
                 }
             })
