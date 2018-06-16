@@ -7,7 +7,7 @@
 
 ### 功能：
 - 进入页面后开始随机播放，一曲播完自动播放下一首
-- 按钮控制播放下一曲，可收藏喜欢的曲目，收藏之后页脚首列显示专辑“我喜欢的”
+- 按钮控制播放下一曲
 - 可拖动进度条控制播放进度
 - 能够根据自己喜好来选择想听的音乐类型
 ---------
@@ -64,14 +64,46 @@ duration         // 获取音乐长度，单位为秒。
 让歌词与时间对应
 
 ```
+var lyric = ret.lyric
 var lyricObj = {}
-ret.lyric.split('\n').forEach(function (line) { // 得到一个数组遍历它
-  var timeArr = line.match(/\d{2}:\d{2}/g) // 匹配时间 
+lyric.split('\n').forEach(function (line) { // 得到一个数组遍历它
+  var times = line.match(/\d{2}:\d{2}/g) // 匹配时间
+  var str = line.replace(/\[.+?\]/g, '')   //匹配歌词
   // 判断数组time是否是数组存在
-  if (timeArr) {
-    timeArr.forEach(function (time) {
-      lyricObj[time] = line.replace(/\[.+?\]/g, '') // 匹配歌词
+  if (Array.isArray(times)) {
+    times.forEach(function (time) {
+      lyricObj[time] = str
     })
   }
 })
+```
+
+**4. 进度条逻辑**
+
+进度条的点击（后退或快进）
+
+```
+this.$container.find('.area-bar .bar').on('click', function (e) {
+  console.log(e)
+  var percent = e.offsetX / parseInt(getComputedStyle(this).width)
+  _this.audio.currentTime = _this.audio.duration * percent
+})
+```
+
+进度条和时间对应
+
+```
+updateStatus() {
+  var min = Math.floor(this.audio.currentTime / 60)
+  var second = Math.floor(Fm.audio.currentTime % 60) + ''
+  second = second.length === 2 ? second : '0' + second
+  this.$container.find('.current-time').text(min + ':' + second)
+  // 设置进度条
+  this.$container.find('.bar-progress').css('width', this.audio.currentTime / this.audio.duration * 100 + '%')
+  //放置歌词
+  var line = this.lyricObj['0' + min + ':' + second]
+  if (line) {
+    this.$container.find('.lyric p').text(line)
+  }
+}
 ```
