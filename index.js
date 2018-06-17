@@ -122,8 +122,8 @@ var Footer = {
 
 var Fm = {
   init: function () {
-    // this.channelId = 'public_shiguang_80hou'
-    // this.channelName = '随机播放'
+    this.channelId = 'public_shiguang_80hou'
+    this.channelName = '随机播放'
     this.$container = $('#page-music')
     this.$bar = $('.bar')
     //创建audio标签播放歌曲
