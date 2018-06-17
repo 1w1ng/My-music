@@ -34,7 +34,7 @@ var Footer = {
     })
     //点击底部右边按钮，往左移动
     this.$rightBtn.on('click', function () {
-      if (_this.isAnimate) return
+      if (_this.isAnimate) { return }
       var itemWidth = _this.$box.find('li').outerWidth(true)//包含内边距外边距及边框
       var rowCount = Math.floor(_this.$box.width() / itemWidth)
 
@@ -122,8 +122,8 @@ var Footer = {
 
 var Fm = {
   init: function () {
-    this.channelId = 'public_shiguang_80hou'
-    this.channelName = '随机播放'
+    // this.channelId = 'public_shiguang_80hou'
+    // this.channelName = '随机播放'
     this.$container = $('#page-music')
     this.$bar = $('.bar')
     //创建audio标签播放歌曲
