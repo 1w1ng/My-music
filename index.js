@@ -169,13 +169,8 @@ var Fm = {
       }, 1000)
     })
     this.audio.addEventListener('pause', function () {
-      //一曲结束自动播放下一首
-      if (_this.audio.currentTime === _this.audio.duration) {
-        _this.loadMusic()
-      } else {
         clearInterval(_this.statusClock)
         // console.log('pause')
-      }
     })
     //点击进度条，后退或快进
     this.$container.find('.area-bar .bar').on('click', function (e) {
@@ -183,6 +178,12 @@ var Fm = {
       var percent = e.offsetX / parseInt(getComputedStyle(this).width)
       _this.audio.currentTime = _this.audio.duration * percent
     })
+    //时间完了以后自动下一曲
+    this.audio.onended = function () {
+      _this.loadMusic(function () {
+        _this.setMusic()
+      })
+    }
   },
   loadMusic(callback) {
     var _this = this
@@ -217,7 +218,7 @@ var Fm = {
         // console.log(_this.lyricObj)
       })
   },
-  setMusic(song){
+  setMusic(){
     //console.log('set music...')
     //console.log(this.song)
     
