@@ -29,6 +29,9 @@ var Footer = {
   //绑定事件
   bind: function () {
     var _this = this
+    $(window).resize(function () {
+      _this.setStyle()
+    })
     //点击底部右边按钮，往左移动
     this.$rightBtn.on('click', function () {
       if (_this.isAnimate) return
@@ -122,13 +125,14 @@ var Fm = {
     this.channelId = 'public_shiguang_80hou'
     this.channelName = '随机播放'
     this.$container = $('#page-music')
+    this.$bar = $('.bar')
     //创建audio标签播放歌曲
     this.audio = new Audio()
     //自动播放
     this.audio.autoplay = true
     this.bind()
     this.loadMusic(function(){
-      this.setMusic
+      this.setMusic()
     })
   },
   bind: function () {
