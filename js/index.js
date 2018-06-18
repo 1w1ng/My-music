@@ -1,9 +1,9 @@
 //自定义事件
 var EventCenter = {
-  on: function (type, handler) {
+  on(type, handler) {
     $(document).on(type, handler)
   },
-  fire: function (type, data) {
+  fire(type, data) {
     //trigger()方法触发被选元素的指定事件类型
     $(document).trigger(type, data)
   }
@@ -11,7 +11,7 @@ var EventCenter = {
 
 var Footer = {
   //初始化页面
-  init: function () {
+  init() {
     this.$footer = $('footer')
     this.$ul = this.$footer.find('ul')
     this.$box = this.$footer.find('.box')
@@ -27,7 +27,7 @@ var Footer = {
     this.render()
   },
   //绑定事件
-  bind: function () {
+  bind() {
     var _this = this
     $(window).resize(function () {
       _this.setStyle()
@@ -121,7 +121,7 @@ var Footer = {
 
 
 var Fm = {
-  init: function () {
+  init() {
     this.channelId = 'public_shiguang_80hou'
     this.$container = $('#page-music')
     this.$bar = $('.bar')
@@ -134,7 +134,7 @@ var Fm = {
       this.setMusic()
     })
   },
-  bind: function () {
+  bind() {
     var _this = this
     EventCenter.on('select-albumn', function (e, channelObj) {
       //专辑名字
