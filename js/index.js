@@ -106,7 +106,7 @@ var Footer = {
     this.setStyle()
   },
   //设置底部样式
-  setStyle: function () {
+  setStyle() {
     //li的数量
     var count = this.$footer.find('li').length
     //li的宽度,包括外边距
@@ -128,7 +128,7 @@ var Fm = {
     //创建audio标签播放歌曲
     this.audio = new Audio()
     //自动播放
-    this.audio.autoplay = "autoplay"
+    this.audio.autoplay = true
     this.bind()
     this.loadMusic(function(){
       this.setMusic()
