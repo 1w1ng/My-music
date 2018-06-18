@@ -122,8 +122,8 @@ var Footer = {
 
 var Fm = {
   init: function () {
-    this.channelId = 'public_shiguang_80hou'
-    this.channelName = '随机播放'
+    // this.channelId = 'public_shiguang_80hou'
+    // this.channelName = '随机播放'
     this.$container = $('#page-music')
     this.$bar = $('.bar')
     //创建audio标签播放歌曲
@@ -168,10 +168,6 @@ var Fm = {
         _this.updateStatus()
       }, 1000)
     })
-    this.audio.addEventListener('pause', function () {
-        clearInterval(_this.statusClock)
-        // console.log('pause')
-    })
     //点击进度条，后退或快进
     this.$container.find('.area-bar .bar').on('click', function (e) {
       console.log(e)
@@ -184,6 +180,10 @@ var Fm = {
         _this.setMusic()
       })
     }
+    this.audio.addEventListener('pause', function () {
+      clearInterval(_this.statusClock)
+      // console.log('pause')
+    })
   },
   loadMusic(callback) {
     var _this = this
