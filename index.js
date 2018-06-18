@@ -129,7 +129,7 @@ var Fm = {
     //创建audio标签播放歌曲
     this.audio = new Audio()
     //自动播放
-    this.audio.autoplay = true
+    this.audio.autoplay = "autoplay"
     this.bind()
     this.loadMusic(function(){
       this.setMusic()
