@@ -177,7 +177,7 @@
   main .area-bar .bar-progress {
     position: absolute;
     height: .8vh;
-    width: 10%;
+    width: 0;
     background-color: #e83c3c;
     border-radius: .2vh;
     transition: width .8s;
